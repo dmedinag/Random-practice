@@ -30,7 +30,7 @@ class Solution {
         // Colour current cell if applicable
         if( grid[x][y] == '1' ) grid[x][y] = 'X';
         else return;
-        // And then look for those around
+        // And then explore the rest of the island
         if( x-1 >= 0 )              colourIsland( x-1, y, grid );
         if( x+1 < grid.size() )     colourIsland( x+1, y, grid );
         if( y-1 >= 0 )              colourIsland( x, y-1, grid );
