@@ -22,8 +22,6 @@
 // Input format example 1:
 // ["11110","11010","11000","00000"]
 
-#include <algorithm>
-
 using namespace std;
 
 class Solution {
