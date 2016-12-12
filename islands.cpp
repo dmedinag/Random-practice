@@ -26,8 +26,6 @@
 using namespace std;
 
 class Solution {
-  public:
-
     void colourIsland( int x, int y, vector<vector<char>>& grid ) {
         // Colour current cell if applicable
         if( grid[x][y] == '1' ) grid[x][y] = 'X';
@@ -38,6 +36,8 @@ class Solution {
         if( y-1 >= 0 )              colourIsland( x, y-1, grid );
         if( y+1 < grid[x].size() )  colourIsland( x, y+1, grid );
     }
+
+  public:
 
     int numIslands(vector<vector<char>>& grid) {
         uint islands = 0;
