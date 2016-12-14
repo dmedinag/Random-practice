@@ -1,3 +1,3 @@
 # Random-practice
 
-I will upload some interesting solved problems here. Find handout as comments in each!
+It's always fun to solve some random problems. Here I will upload some solutions for practice stuff in different languages. Feel free to comment on possible improvements/optimizations!
