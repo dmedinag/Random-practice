@@ -171,8 +171,3 @@ public class Solution {
     */
     public int bulbSwitchSmart(int n) { return (int) Math.sqrt(n); }
 }
-
-public class Solution {
-
-
-}
