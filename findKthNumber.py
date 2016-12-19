@@ -33,7 +33,6 @@ Smart approach 1: calculate the value following the series
 """
 def findKthNumber(n,k):
     v = 1
-
     i = 1
 
     while True:
@@ -69,4 +68,6 @@ Idea for Smart approach 2: calculate the value directly, from a formula in terms
 
 n = sys.argv[1]
 p = sys.argv[2]
-print(generateSortedArray(int(n), int(p)))
+
+print(findKthNumber(int(n), int(p)))
+# for k in range(1, int(p)+1): print(findKthNumber(int(n), k), end=', ')
