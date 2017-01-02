@@ -34,12 +34,14 @@ class Solution {
 
     void computeNextState( const int &i, const int &j, vector< vector<int> >& board, const int &neighbors ) {
         if( board[i][j] ) {                             // kill cell if necessary
-            if( neighbors < 3 ) board[i][j] = 2;
-            if( neighbors > 3 ) board[i][j] = 2;
+            if( neighbors < 2 ) board[i][j] = 2;
+            else if( neighbors > 3 ) board[i][j] = 2;
         } else if ( neighbors == 3 ) board[i][j] = -1;  // revive cell if necessary
     }
 public:
     void gameOfLife( vector< vector<int> >& board ) {
+
+        // for each cell 1
         for( int i = 0; i < board.size(); ++i ){
             for( int j = 0; j < board[i].size(); ++j ) {
 
@@ -48,10 +50,13 @@ public:
             }
         }
 
+        // for each cell 2 ( O(2n) )
         for( int i = 0; i < board.size(); ++i ){
             for( int j = 0; j < board[i].size(); ++j ) {
-                if( board[i][j] == -1) board[i][j] = 1;
+
+                if( board[i][j] == -1 ) board[i][j] = 1;
                 else if( board[i][j] == 2 ) board[i][j] = 0;
+                
             }
         }
     }

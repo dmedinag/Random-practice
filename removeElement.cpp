@@ -5,60 +5,50 @@ using namespace std;
 
 class Solution {
 public:
-    int removeElement(vector<int>& nums, int val) {
+    int removeElement( vector<int>& nums, const int val ) {
+
         int size = nums.size();
-        for( int i = 0; i < nums.size(); ++i ) {
-            if( nums[i] == val ) {
-                --size;
-                for( int j = i+1; j < nums.size(); ++j ) {
-                    if( nums[j] != val ) {
-                        nums[i] = nums[j];
-                        nums[j] = val;
-                        break;
-                    }
-                    ++size;
-                } // look for match
+
+        for( int i = 0; i < size; ++i ) {
+            while( nums[i] == val ) {
+                for( int j = i; j < size; nums[ j++ ] = nums[ j+1 ] );
+                nums[ --size ]  = val;
             }
         }
         return size;
     }
 };
 
-void printArray( vector<int>& nums ) {
-    for( auto num : nums ) cout << num << " ";
-    cout << endl;
+string arrayToStr( const vector<int>& nums ) {
+    string res = "";
+    for( auto num : nums ) res += to_string(num) + " ";
+    return res;
 }
 
 int main( int argc, char **argv ) {
+
     Solution sol;
     vector<int> nums;
-    char val;
-    string num;
-    cin >> noskipws;
+    int num;
 
+    cout << "Enter values separated by either spaces or new lines.\n";
+    cout << "Enter value -1 to finish." << endl;
 
     for( ;; ) {
-        cin >> val;
-        cout << "Read character  '" << val << "'" << endl;
-        if( val == ' '  || val == 'z' ) {
-            nums.push_back( atoi( num.c_str() ) );
-            num.clear();
-        }
-        if( val == 'z' ) {
-        cin >> val;
-            break;
-        }
-        num += val;
-
-        cout << "num is: " << num << endl;
+        cin >> num;
+        if( num == -1 ) { break; }
+        nums.push_back( num );
     }
 
+    cout << "Original array: " << arrayToStr( nums ) << endl;
 
-    cout << "Original array: ";
-    printArray(nums);
-    cout << "Value to remove: " << val << endl;
-    int size = sol.removeElement( nums, val );
-    cout << "Modified array: ";
-    printArray(nums);
+    cout << "Enter value to remove\n";
+    cin >> num;
+    cout << "Value to remove: " << num << endl;
+
+    int size = sol.removeElement( nums, num );
+
+    cout << "Modified array: " << arrayToStr( nums ) << endl;
+
     cout << "Returned size: " << size << endl;
 }
